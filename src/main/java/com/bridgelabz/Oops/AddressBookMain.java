@@ -25,8 +25,36 @@ public class AddressBookMain {
         List<ContactDetails> contactList = new ArrayList<>();
         ContactDetails contact = new ContactDetails(firstName, lastName, address, city, state, zip, phone);
         contactList.add(contact);
+        AddressBook addressBook = new AddressBook();
+        addressBook.setContacts(contactList);
+        displayContacts(addressBook);
 
     }
 
+    static class AddressBook {
+        private List<ContactDetails> contacts;
+
+        public List<ContactDetails> getContacts() {
+            return contacts;
+        }
+
+        public void setContacts(List<ContactDetails> contacts) {
+            this.contacts = contacts;
+        }
+    }
+
+    public static void displayContacts(AddressBook addressBook) {
+        List<ContactDetails> contactDetails = addressBook.getContacts();
+
+        for (int i = 0; i < contactDetails.size(); i++) {
+            ContactDetails contactperson = contactDetails.get(i);
+            System.out.println("Contact Details :");
+            System.out.println("FirstName :" + contactperson.getFirstName() + "     LastName :" + contactperson.getLastName()
+                    + "     Address :" + contactperson.getAddress() + "      City :" + contactperson.getCity()
+                    + "   State :" + contactperson.getState() + "     Zip :" + contactperson.getZip() + "     Phone Number :" + contactperson.getPhone());
+
+        }
+
+    }
 }
 
